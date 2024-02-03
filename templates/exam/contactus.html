@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <title>PARIKSHA</title>
+
+
+
+</head>
+
+<body>
+
+  {% include "exam/navbar.html" %}
+ <br><br>
+
+  <center>
+    <h3 class='alert alert-success'>Please fillup the form in order to contact us</h3>
+    <div class="container">
+    <form method="POST" action="/pariksha/contact-success/"autocomplete="off">
+      <!-- Very Important csrf Token -->
+      {% csrf_token %}
+      <div class="form-group" style="margin: auto;">
+        
+        <div class="form-md-row" >
+          <div class="form-group col-md-6">
+        <label for="id_Name">Name:</label>
+        <input type="text" name="Name" maxlength="70" placeholder="Name" class="form-control" required id ="id_Name">
+          </div>
+        </div>
+
+      <div class="form-md-row">
+        <div class="form-group col-md-6">
+          <label for="id_Email">Email:</label>
+          <input type="email" name="Email" maxlength="50" placeholder="Email" class="form-control" required id ="id_Email">
+        </div>
+      </div>
+
+        <div class="form-md-row">
+          <div class="form-group col-md-6">
+            <label for="mobile">Contact</label>
+            <input type="text" name="Mobile"  maxlength="10" class="form-control" placeholder="Contact Number"required id ="mobile">
+          </div>
+          </div>
+
+        <div class="form-md-row">
+          <div class="form-group col-md-6">
+          <label for="id_Message">Message:</label>
+        <textarea name="Message" required id="id_Message" placeholder="Enter your query here" cols="30" class="form-control" rows="3"></textarea>
+          </div>
+        </div>
+        
+        
+        <input type="submit" value="Submit" class='btn btn-primary' style="border-radius: 0%;">
+      </div>
+    </form>
+    </div>
+  </center>
+<br><br><br> <br><br><br><br><br><br>
+{% include "exam/footer.html" %}
+</body>
+
+</html>
+
+
+  

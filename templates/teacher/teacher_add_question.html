@@ -1,0 +1,71 @@
+{% extends 'teacher/teacherbase.html' %}
+
+{% block content %}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    a:link {
+            text-decoration: none;
+        }
+    
+  </style> 
+</head>
+<h2 style="text-align:center;">Add Question</h2>
+<form method="POST" autocomplete="off" style="margin:100px;margin-top: 0px;">
+    {%csrf_token%}
+    <div class="form-group">
+        <label for="question">Course : {{course}} | {{course.course_teacher}} ({{course.course_teacher.user_id}})</label>
+      
+      <!-- <select name="courseID" required id="id_courseID" class="form-control">
+        <option value selected >Course Name</option>
+        {% for t in courses %}
+        <option value={{t.id}}>{{t.course_name}}</option>
+        {% endfor %}
+      </select> -->
+        <br>
+        {% for i in list%}
+      <div>
+      <label for="question">Question-{{i}}</label>
+      <textarea name="question{{i}}" required id="id_question" class="form-control" cols="50" rows="3" maxlength="600" placeholder="Example: What is the relation calculus?"></textarea>
+      
+        <br>
+      <label for="question_number">Marks</label>
+      <input type="number" name="marks{{i}}" min="0" placeholder="Example: 5" class="form-control" required id="id_marks">
+        <br>
+      <label for="option1">Option 1</label>
+      <input type="text" name="option1{{i}}" maxlength="200" class="form-control" placeholder="Example: It is a kind of procedural language" required id="id_option1">
+        <br>
+       <label for="option2">Option 2</label>
+      <input type="text" name="option2{{i}}" maxlength="200" class="form-control" placeholder="Example: It is a non-procedural language" required id="id_option2">  
+      <br>
+      <label for="option3">Option 3</label>
+      <input type="text" name="option3{{i}}" maxlength="200" class="form-control" placeholder="Example: It is a high-level language" required id="id_option3">  
+      <br>
+      <label for="option4">Option 4</label>
+      <input type="text" name="option4{{i}}" maxlength="200" class="form-control" placeholder="Example: It is Data Definition language" required id="id_option4"> 
+      <br>
+      <label for="answer">Correct Answer</label>
+      
+      <select name="answer{{i}}" class="form-control" required id="id_answer">
+        <option value selected >Provide Correct Option</option>
+        <option value="Option1">Option1</option>
+        <option value="Option2">Option2</option>
+        <option value="Option3">Option3</option>
+        <option value="Option4">Option4</option>
+      </select> 
+      <br>
+    </div>
+{%endfor%}
+    </div>
+    <button type="submit" class="btn btn-success" style="border-radius: 0%;">Submit Question</button>
+  </form>
+<br><br><br>
+{% endblock content %}

@@ -1,0 +1,54 @@
+{% extends 'student/studentbase.html' %}
+
+{% block content %}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    a:link {
+            text-decoration: none;
+        }
+    
+  </style> 
+</head>
+<br><br><br>
+<h2 style="text-align:center; text-decoration: underline;  color: #a91ccd;">Subject Name : {{course.course_name}}  |  Teacher : {{course.course_teacher}}</h2>
+
+<h3 style="text-align:center; color: #217ddb;">Student Name : {{result.student|upper}}  |  Exam Details : {{result.date}}</h3>
+<br>
+
+<center>
+  <div id="piechart"></div></center>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+  <script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+    ['Task', 'Hours per Day'],
+    // ['Total questions',{{total_que}}],
+    // ['Total marks', {{course.total_marks}}],
+    ['Obtained Marks', {{result.marks}}],
+    ['Left Marks',{{course.total_marks}}-{{result.marks}}],
+    
+  ]);
+  
+    // Optional; add a title and set the width and height of the chart
+    var options = {'title':'Test Score', 'width':650, 'height':400};
+  
+    // Display the chart inside the <div> element with id="piechart"
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    chart.draw(data, options);
+  }
+  </script>
+
+<br><br>
+{% endblock content %}

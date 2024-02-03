@@ -1,0 +1,112 @@
+{% extends 'student/studentbase.html' %}
+{% block content %}
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PARIKSHA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Great+Vibes&family=Yeseva+One&display=swap" rel="stylesheet">
+    <style>
+        .result {
+            border: 6px solid rgb(255 252 152);
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+            background-color: #f1ffc5;
+            color: #d7961e;
+            font-family: ui-serif;
+            padding-top: 41px;
+            padding-right: 38px;
+
+            /* background-image: url(/static/image/f2.png);
+            background-repeat: no-repeat;
+            background-size: cover; */
+
+
+        }
+
+        #frame {
+            height: 500px;
+            width: 80%;
+            position: relative;
+            height: 1006px;
+            width: 77%;
+    position: absolute;
+    margin-left: -689px;
+        }
+
+        .container1{
+            display: inline-flex;
+           
+            gap: 166px;
+          
+        }
+        #item{
+            
+            height: 200px;
+            /* font-family: 'Dancing Script', cursive; */
+            font-size: 2rem;
+            margin: 5px;
+            font-family: 'Great Vibes', cursive;
+
+            
+        }
+        /* #blogo {
+            height: 30px;
+            width: 20px;
+
+        } */
+    </style>
+</head>
+
+<body>
+    <section class="result">
+        <!-- <img src="/static/image/biglogo.png" alt="logo" id="blogo" style="height: 30px;
+        width: 20px;"> -->
+        <img src="{% static student.profile_pic.url %}" alt="Profile Pic" height="100px" width="100px"
+            style="    padding-top: 80px;">
+        <img src="/static/image/f1.png" alt="frame" id="frame">
+        <h2> {{student}}</h2>
+        <h3>Reference No : P{{no}}</h3>
+        <h2>Subject : {{course.course_name}}</h2>
+        <h2>Subject Teacher : {{course.course_teacher}}</h2>
+        <h2>Student Address: {{student.address}}</h2>
+        <h2> Mobile No : {{student.mobile}}</h2>
+        <h1 style="font-family: 'Yeseva One', cursive;">PARIKSHA ONLINE EXAMINATION</h1>
+        <h2>RESULT</h2>
+        <h3>Obtained Marks :{{result.marks}} </h3>
+        <h3>Total Marks :{{course.total_marks}} </h3>
+        <h3>Number of attemps : ONE</h3>
+        <h3 style="padding-bottom: 71px;">Exam Date : {{result.date}}</h3>
+        <div class="container1">
+        <div id="item">
+            <h6 style="margin: 15px; font-family: ui-serif; text-decoration: underline; margin-top: 0px;">Administrated By</h6>
+        <h6 style="margin: 15px;">Samiran Gorai</h6>
+        <h6 style="margin: 15px;">Sourav Kumar Choudhary</h6>
+        <h6 style="margin: 15px;">Soumya Roy</h6>
+    </div>
+        <img src="/static/image/biglogo.png" alt="logo" id="blogo" style="height: 107px;
+        width: 135px; margin-left: -85px;" id="item">
+        {%if result.marks >= course.pass_marks%}
+        <img src="/static/image/passeed.jpg" alt="passed" style="height: 90px; width: 100px; " id="item">
+        {%else%}
+        <img src="/static/image/failed.jpg" alt="failed" style="height: 90px; width: 100px; " id="item">
+        {%endif%}
+    </div>
+
+    </section>
+</body>
+
+</html>
+
+{% endblock content %}

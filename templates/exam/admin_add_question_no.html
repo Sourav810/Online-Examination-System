@@ -1,0 +1,45 @@
+{% extends 'exam/adminbase.html' %}
+
+{% block content %}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+    a:link {
+            text-decoration: none;
+        }
+        
+    </style>
+</head>
+<h2 style="text-align:center;">Provide Number of Questions</h2>
+
+  <form method="POST" autocomplete="off" style="margin:100px;margin-top: 0px;">
+    {%csrf_token%}
+    <div class="form-group">
+        <label for="question">Course</label>
+      
+      <select name="courseID" required id="id_courseID" class="form-control">
+        <option value selected >Course Name | Course Teacher</option>
+        {% for t in courses %}
+        <option value={{t.id}}>{{t.course_name}} | {{t.course_teacher}} ({{t.course_teacher.user_id}})</option>
+        {% endfor %}
+      </select>
+        <br>
+      <label for="question_number">No of Question</label>
+      <input type="number" name="qno" min="0" placeholder="Example: 5" class="form-control" required id="id_qno">
+        <br>
+    </div>
+     
+
+    <button type="submit" class="btn btn-success" style="border-radius: 0%;">Submit Question</button>
+  </form>
+
+<br><br><br><br>
+{% endblock content %}

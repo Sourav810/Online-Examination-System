@@ -1,0 +1,65 @@
+{% extends 'student/studentbase.html' %}
+{% block content %}
+{%load static%}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <title>PARIKSHA</title>
+
+</head>
+
+<h3 class='alert alert-danger' style="display:flex; justify-content: center; width: 50%; color: red; margin-left: inherit;">Please follow the rules mentioned below</h3>
+<div class="container my-4">
+    <div class="jumbotron">
+        
+        <div class="row"> 
+
+            <div class="card border-info mx-4 my-4">
+                <div class="card-body text-default">
+
+                    <h4 class="card-title">Exam Details :</h4>
+                    <p class="card-text">
+                        </p><ul style="list-style:decimal;">
+                            <li>Course : {{course.course_name}}</li>
+                            <li>Total Question : {{total_questions}}</li>
+                            <li>Total Marks : {{total_marks}}</li>
+                            <li>Exam Duration : {{course.hou}}h:{{course.minu}}m:{{course.sec}}s</li>
+                        </ul>
+                    <p></p>
+
+
+
+                    <h4 class="card-title">Rules :</h4>
+                    <p class="card-text">
+                        </p><ul style="list-style:decimal;">
+                            <li>All questions are MCQ (multiple choice question)</li>
+                            <li><span class="text-danger">Only one choice is correct among the given.</span></li>
+                            <li>Every question may carry different marks.</li>
+                            <li>Try to answer ASAP.</li>
+                            <li><span class="text-danger">If you PRESS refresh or go back to the previous page, the question paper will be submitted automatically.</span></li>
+                            <li>Questions are presented randomly.</li>
+                            <li>You will be able to view marks immediately once after you submit the answer.</li>
+                            <li><span class="text-danger">If time ends, the question paper will be submitted automatically.</span></li>
+                            <li>In the previous case your attempted answers are saved and considered in marks calculation.</li>
+                            
+                            <li><span class="text-info">When you click on the below Enter Examination button an image is captured instantly. This is for capturing the photo-id of the student.</span></li>
+                            <li><span class="text-warning">Students are requested to show their photo-id before clicking the button.</span> <span class="text-danger"> IT IS MANDATORY</span></li>
+                            <li><span class="text-info">In the next page you will get 'START EXAM' button. After pressing that the exam will be started.</span></li>
+                            <li>You will get 5 seconds extra to do that.</li>
+                            <li>Any kind of malpractise such as switching to another page or window will cancel your exam.</li>
+                            <li><span class="text-danger">At exam time don't pess 'ESCAPE' button, it will cancel your exam. </li>
+                        </ul>
+                    <p></p>
+                    <a href="/pariksha/student/start-exam/{{course.id}}" class="btn btn-success" style="border-radius:0px;">Enter Examination</a>
+                </div>  <br>
+                <div class="card-footer">Best Of Luck, Students!</div>  
+            </div>  
+        </div>  
+
+    </div>
+</div>
+
+<br><br><br><br><br><br>
+{% endblock content %}

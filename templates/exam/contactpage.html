@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <title>PARIKSHA</title>
+<style>
+  body{
+    background-color: #ace7df!important;
+  }
+  #p1{
+    padding-left: 40px;
+    padding-right: 40px;
+    margin: 40px;
+    color: #6565b9;
+    font-size: 25px;
+    text-decoration: underline;
+    /* background-color: #c5d3e7; */
+  }
+  .para{
+    text-align: initial;
+    padding: 0px 60px;
+    color: gray;
+    /* background-color: #c5d3e7; */
+  }
+</style>
+
+
+</head>
+
+<body>
+
+  {% include "exam/navbar.html" %}
+  
+<br><br>
+  <center>
+    <h3 class='alert alert-success' style="background-color: #a3d3ae;">Thank You {{name}} for your query. We will respond you soon </h3>
+<p id="p1">PARIKSHA ONLINE EXAMINATION SYSTEM : AMONG THE BEST ONLINE EXAMINATION PLATFORMS</p>
+    <div class="para">
+  <li>Remote Access: With an online examination system, students can take exams from anywhere in the world, as long as they have a computer and an internet connection.</li>
+  <li>Automated Grading: Online examination systems can automatically grade multiple-choice questions, saving time and reducing the risk of human error.</li>
+  <li>Time Management: Online examination systems can be set to allow students a specific amount of time to complete the exam, which can help ensure that everyone has an equal amount of time to complete the test.</li>
+  <li>Randomization: Online examination systems can randomize the order of questions and answer options, reducing the risk of cheating.</li>
+  <li>Flexibility: Online examination systems can be used to administer a variety of different types of exams, including multiple-choice, true/false, short answer, and essay exams.</li>
+  <li>Security: Online examination systems can provide a high level of security to prevent cheating and ensure the integrity of the exam.</li>
+  <li>Accessibility: Online examination systems can be made accessible to students with disabilities, providing accommodations such as screen readers or alternative testing formats.</li>
+  <li>Instant Feedback: Online examination systems can provide immediate feedback to students on their performance, allowing them to identify areas where they need to improve.</li>
+  <li>Data Analysis: Online examination systems can generate detailed reports on student performance, allowing instructors to identify trends and adjust their teaching methods accordingly.</li>
+  <li>Cost-effectiveness: Online examination systems can save time and money by eliminating the need for paper exams, answer sheets, and manual grading.</li>
+</div>          
+  
+  </center>
+<br><br>
+
+{% include "exam/footer.html" %}
+</body>
+
+</html>

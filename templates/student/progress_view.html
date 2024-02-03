@@ -1,0 +1,58 @@
+{% extends 'student/studentbase.html' %}
+
+{% block content %}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    a:link {
+            text-decoration: none;
+        }
+    
+  </style> 
+</head>
+<br>
+<h2 style="text-align:center; text-decoration: underline; color: #a91ccd;">Progress Graph</h2>
+<!-- <h2 style="text-align:center;">Subject Name : {{course.course_name}}  |  Teacher : {{course.course_teacher}}</h2> -->
+
+<h3 style="text-align:center; color: #217ddb;">Student Name : {{student|upper}}  |  Exam Progress Details : </h3>
+<br>
+
+<center>
+  <div id="piechart" style="max-width:600px; height:150px; margin-top: 20px;"></div></center>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+  <script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+ 
+  function drawChart() {
+
+const data = google.visualization.arrayToDataTable([
+  ['Subjects','Marks'],
+  {%for n in  results%}
+  ['{{n.exam}}', {{n.marks}}],
+
+  {%endfor%}
+]);
+
+const options = {
+  title: 'STUDENT PROGRESS WITH GRAPHICAL REPRESENTATION'
+};
+
+const chart = new google.visualization.BarChart(document.getElementById('piechart'));
+chart.draw(data, options);
+
+}
+
+</script>
+
+<br><br>
+{% endblock content %}

@@ -1,0 +1,50 @@
+{% extends 'teacher/teacherbase.html' %}
+
+{% block content %}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    a:link {
+            text-decoration: none;
+        }
+    
+  </style>
+</head>
+<br><br>
+<form method="POST" autocomplete="off" style="margin:100px;margin-top: 0px;">
+    {%csrf_token%}
+    <div class="form-group">
+        <h1>COURSE : {{course|upper}}</h1>
+        <h2>Teacher : {{course.course_teacher}}</h2><br>
+      <br><br>
+      <label >Set Exam Duration</label>
+      <br>
+        <div class="form-group col-md-4">
+          <label for="exam_hour">Hour</label>
+          <input type="number" required id="hour" name="hour" class="form-control" placeholder="{{course.hou}}h"/>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="exam_minute">Minute</label>
+          <input type="number" required id="min" name="minute" class="form-control" placeholder="{{course.minu}}m"/>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="exam_second">Second</label>
+          <input type="number" required id="sec" name="second" class="form-control" placeholder="{{course.sec}}s"/>
+        </div>
+       
+      
+    </div>
+    <br>
+
+    <button type="submit" class="btn btn-success" style="border-radius: 0%;">Submit New Exam timing</button>
+  </form>
+<br><br><br><br><br><br><br>
+{% endblock content %}

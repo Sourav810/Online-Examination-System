@@ -1,0 +1,35 @@
+{% extends 'teacher/teacherbase.html' %}
+
+{% block content %}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    a:link {
+            text-decoration: none;
+        }
+    
+  </style>
+</head>
+<br><br>
+<form method="POST" autocomplete="off" style="margin:100px;margin-top: 0px;">
+    {%csrf_token%}
+    <div class="form-group">
+        <h2>Teacher : {{teacher}}</h2><br>
+      <label for="id_exam_key">EXAM KEY</label>
+      <input type="text" name="exam_key" maxlength="10" class="form-control" placeholder="{{teacher.exam_password}}" required id="id_exam_key">  
+      
+    </div>
+    
+
+    <button type="submit" class="btn btn-success" style="border-radius: 0%;">Submit New Exam Key</button>
+  </form>
+<br><br><br><br><br><br><br>
+{% endblock content %}

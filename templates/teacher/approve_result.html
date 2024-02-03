@@ -1,0 +1,81 @@
+{% extends 'teacher/teacherbase.html' %}
+{% block content %}
+{%load static%}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    .row {
+      margin: 100px;
+    }
+  </style>
+</head>
+<br><br>
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h6 class="panel-title">APPROVE RESULTS FOR {{course}} SUBJECT</h6>
+    </div>
+    <table class="table table-hover table-bordered text-center" id="dev-table">
+      <thead>
+        <tr>
+
+          <th>Name</th>
+          <th>Photo</th>
+          <th>Contact Details</th>
+          <th>Result Details</th>
+          <th>Exam_pic</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      {% for t in results %}
+      <tr>
+
+        <td> {{t.student}}</td>
+        <td> <img src="{% static t.student.profile_pic.url %}" alt="Profile Pic" height="40px" width="40px" /></td>
+        <td>{{t.student.mobile}}, {{t.student.address}}</td>
+        <td>M:{{t.marks}}, {{t.date}}</td>
+        <td>
+        {%for r in exam_pics%}
+        {% if r.student == t.student%}
+        <a href="{{r.exam_pic}}"><img src="{{r.exam_pic}}" alt="Exam Pic" height="100px" width="150px" /></a></td>
+        {%endif%}
+        {%endfor%}
+        </td>
+        <td>
+            {%if t.checked == 1 %}
+            <span style="color: green;">CHECKED<span>
+
+            {% elif t.checked == 3%}
+            <span style="color: green;">CHECKED<span> 
+            <span style="color: Red;">(CHEATER)<span>
+            {%else%}
+            <span style="color:orange;">UNCHECKED<span></span>
+            {%endif%}
+        </td>
+        <td>
+          <a class="btn btn-success btn-xs" style="border-radius: 0%;" href="http://localhost:8000/pariksha/teacher/ok-student-result/{{course.id}}/{{t.student_id}}"><span class="glyphicon glyphicon-ok"></span></a>
+          <a class="btn btn-warning btn-xs" style="border-radius: 0%;" href="http://localhost:8000/pariksha/teacher/cheat-student-result/{{course.id}}/{{t.student_id}}"><span class="glyphicon glyphicon-remove"></span></a>
+          <a class="btn btn-danger btn-xs" style="border-radius: 0%;" href="http://localhost:8000/pariksha/teacher/delete-student-result/{{course.id}}/{{t.student_id}}"><span class="glyphicon glyphicon-trash"></span></a>
+        </td>
+            
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+<br><br><br><br><br><br>
+{% endblock content %}

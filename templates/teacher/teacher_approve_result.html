@@ -1,0 +1,66 @@
+{% extends 'teacher/teacherbase.html' %}
+{% block content %}
+{%load teacher_tags%}
+{%load static%}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <title>PARIKSHA</title>
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    .row {
+      margin: 100px;
+    }
+  </style>
+</head>
+<br><br>
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h6 class="panel-title">Available Courses</h6>
+    </div>
+    <table class="table table-hover table-bordered" id="dev-table">
+      <thead>
+        <tr>
+
+          <th>Course</th>
+          <th>Total Students</th>
+          <th>Total Appeared Stdents</th>
+          <th>Total Marks</th>
+          <th>Pass Marks</th>
+          <th>Approve Results</th>
+          
+        </tr>
+      </thead>
+      {% for t in courses %}
+      <tr>
+
+        <td> {{t.course_name}}</td>
+        <td>{{total_student}}</td>
+        <td>
+          {% counter t.id %}
+          
+        </td>
+        <td>{{t.total_marks}}</td>
+        <td>{{t.pass_marks}}</td>
+        
+        <td><a href="http://localhost:8000/pariksha/teacher/approve-results/{{t.id}}">Check it</a></td>
+    </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+<script>
+
+</script>
+<br><br><br><br><br><br>
+{% endblock content %}
